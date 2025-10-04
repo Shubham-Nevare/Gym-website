@@ -56,9 +56,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white `}>
         <Navbar />
-        <main>{children}</main>
+        <main className="max-w-[1440px] mx-auto px-[16px] md:px[32px]">{children}</main>
         <Footer />
       </body>
     </html>
