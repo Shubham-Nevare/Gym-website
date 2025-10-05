@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import {
   Dumbbell,
@@ -24,6 +24,7 @@ import {
   Youtube,
   HelpCircle,
   Phone,
+  ChevronDown,
 } from "lucide-react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -35,6 +36,12 @@ import { useRef, useState } from "react";
 
 export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   const testimonials = [
     {
@@ -189,7 +196,7 @@ export default function Home() {
     },
     {
       icon: HeartPulse,
-      title: "Yoga & Mindfulness",
+      title: "Yoga",
       desc: "Flexibility, balance, and mental wellness",
       gradient: "from-green-500 to-teal-500",
     },
@@ -333,6 +340,39 @@ export default function Home() {
     },
   ];
 
+  const faqData = [
+    {
+      question: "What are your gym timings?",
+      answer:
+        "We're open 6 AM to 11 PM, 7 days a week. Early morning and late evening slots are available for your convenience.",
+    },
+    {
+      question: "Do you provide personal training?",
+      answer:
+        "Yes! We have certified personal trainers including our founder Sujeet Kargutkar with 21+ years of experience. PT sessions are available for all membership plans.",
+    },
+    {
+      question: "What facilities do you have?",
+      answer:
+        "We have modern weight training equipment, cardio machines, steam room, yoga studio, group classes, and a clean, well-maintained environment.",
+    },
+    {
+      question: "Is there a trial period?",
+      answer:
+        "Yes! We offer a 3-day free trial so you can experience our facilities and training before committing to a membership.",
+    },
+    {
+      question: "What are your membership plans?",
+      answer:
+        "We have Monthly (₹1,999), Quarterly (₹4,999), and Yearly (₹13,999) plans. All plans include gym access, cardio, and steam facilities.",
+    },
+    {
+      question: "Do you provide diet plans?",
+      answer:
+        "Yes! Our Quarterly and Yearly plans include personalized diet plans to help you achieve your fitness goals faster.",
+    },
+  ];
+
   return (
     <div id="home" className="w-full overflow-x-hidden">
       {/* Floating WhatsApp Button */}
@@ -351,7 +391,7 @@ export default function Home() {
         </div>
       </motion.a>
 
-      {/* Hero Section - Enhanced */}
+      {/* Hero */}
       <section className="hero-section relative overflow-hidden rounded-3xl border border-white/20 mt-6 bg-gradient-to-br from-gray-900 via-black to-red-900/20">
         <div className="absolute inset-0">
           <Image
@@ -406,12 +446,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="section-subtitle mt-3 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light px-4"
+              className="section-subtitle mt-3 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-semibold px-4"
             >
               Premium facilities, certified trainers, and{" "}
-              <span className="font-semibold text-red-400">
-                celebrity guidance
-              </span>
+              <span className="font-bold text-red-400">celebrity guidance</span>
               . Claim your{" "}
               <span className="font-bold text-orange-400">
                 3-day free trial
@@ -516,7 +554,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* About Section - Enhanced */}
+      {/* About */}
       <section id="about" className="py-16 md:py-20">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <motion.div
@@ -606,7 +644,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section - Enhanced */}
+      {/* Services */}
       <section id="services" className="py-16 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -628,46 +666,50 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <div className="mt-12 sm:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-         {services.map(({ icon: Icon, title, desc, gradient }, index) => (
-  <motion.div
-    key={title}
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: index * 0.1 }}
-    viewport={{ once: true }}
-    whileHover={{ y: -5 }}
-    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent hover:border-white/20 transition-all duration-300"
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-    
-    <div className="relative p-8 space-y-4">
-      {/* Icon + Title in one row */}
-      <div className="flex items-center gap-3">
-        <div className={`p-3 rounded-xl bg-gradient-to-r ${gradient} shadow-lg`}>
-          <Icon className="h-6 w-6 text-white" />
-        </div>
-        <h3 className="text-xl font-bold text-white">{title}</h3>
-      </div>
+        {/* Responsive Grid */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {services.map(({ icon: Icon, title, desc, gradient }, index) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent hover:border-white/20 transition-all duration-300"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      {/* Description */}
-      <p className="text-neutral-300 leading-relaxed">
-        {desc}
-      </p>
+              <div className="relative p-6 sm:p-8 space-y-4">
+                {/* Icon + Title */}
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`p-3 rounded-xl bg-gradient-to-r ${gradient} shadow-lg`}
+                  >
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
+                    {title}
+                  </h3>
+                </div>
 
-      {/* Learn more link */}
-      <div className="flex items-center gap-2 text-sm text-neutral-400 group-hover:text-red-400 transition-colors">
-        <span>Learn more</span>
-        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-      </div>
-    </div>
-  </motion.div>
-))}
+                {/* Description */}
+                <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+                  {desc}
+                </p>
 
+                {/* Learn more link */}
+                <div className="flex items-center gap-2 text-sm text-neutral-400 group-hover:text-red-400 transition-colors">
+                  <span>Learn more</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Interactive Testimonials */}
+      {/* Testimonials */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-gray-900 to-black rounded-3xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -689,7 +731,7 @@ export default function Home() {
         </motion.div>
 
         <div className="mt-12 sm:mt-16 max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center px-4">
             {/* Testimonial Cards */}
             <div className="space-y-6">
               {testimonials.map((testimonial, index) => (
@@ -763,7 +805,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Plans Section - Enhanced */}
+      {/* Plans */}
       <section id="plans" className="py-16 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -784,7 +826,19 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <div className="mt-12 sm:mt-16 grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        {/* Plans Grid (Responsive + Scrollable on Mobile) */}
+        <div
+          className="
+    mt-12 py-8 sm:mt-16 
+    flex sm:grid sm:grid-cols-1 md:grid-cols-3 
+    gap-4 sm:gap-6 md:gap-8 
+    max-w-6xl mx-auto 
+    overflow-x-auto sm:overflow-visible 
+    snap-x snap-mandatory 
+    px-2 sm:px-0 
+    scrollbar-hide
+  "
+        >
           {plan.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -793,14 +847,18 @@ export default function Home() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className={`relative rounded-3xl border-2 p-8 ${
-                plan.popular
-                  ? "border-red-500 bg-gradient-to-b from-red-600/10 to-red-900/20 shadow-2xl shadow-red-500/20"
-                  : "border-white/10 bg-gradient-to-b from-white/5 to-transparent"
-              }`}
+              className={`
+        relative rounded-3xl border-2 p-8 
+        min-w-[85%] sm:min-w-0 snap-center
+        ${
+          plan.popular
+            ? "border-red-500 bg-gradient-to-b from-red-600/10 to-red-900/20 shadow-2xl shadow-red-500/20"
+            : "border-white/10 bg-gradient-to-b from-white/5 to-transparent"
+        }
+      `}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <div className="absolute text-center -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
                     MOST POPULAR
                   </div>
@@ -883,29 +941,57 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Trainers - Enhanced */}
-      <section id="trainers" className="py-20 md:py-28">
-        <div className="text-center">
+      {/* Trainers Section */}
+      <section id="trainers" className="py-16 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 text-sm font-medium mb-6">
-            <Users className="h-4 w-4" />
-            OUR TEAM
+            <Dumbbell className="h-4 w-4" />
+            OUR TRAINERS
           </div>
-          <h2 className="section-title text-4xl md:text-5xl">
-            Meet Our <span className="text-purple-400">Expert Trainers</span>
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl">
+            Meet Our <span className="text-purple-400">Experts</span>
           </h2>
-          <p className="section-subtitle text-center mt-4 max-w-2xl mx-auto text-lg">
-            Certified professionals with decades of combined experience to guide
-            your fitness journey
+          <p className="section-subtitle text-center mt-4 max-w-2xl mx-auto text-base sm:text-lg px-4">
+            Certified trainers dedicated to helping you reach your fitness
+            goals.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* ✅ Scrollable on mobile, grid on desktop */}
+        <div
+          className="
+      mt-12 py-8 sm:mt-16
+      flex sm:grid sm:grid-cols-2 lg:grid-cols-3
+      gap-4 sm:gap-6 md:gap-8
+      max-w-6xl mx-auto
+      overflow-x-auto sm:overflow-visible
+      snap-x snap-mandatory
+      px-2 sm:px-0
+      scrollbar-hide
+    "
+        >
           {trainer.map((trainer, i) => (
-            <div
+            <motion.div
               key={i}
-              className="group relative bg-gradient-to-b from-white/5 to-transparent rounded-2xl border border-white/10 hover:border-purple-500 transition-all duration-500 overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="
+          group relative bg-gradient-to-b from-white/5 to-transparent
+          rounded-2xl border border-white/10 hover:border-purple-500
+          transition-all duration-500 overflow-hidden
+          min-w-[85%] sm:min-w-0 snap-center
+        "
             >
-              {/* Background Glow Effect */}
+              {/* Background Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -956,107 +1042,125 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* View Profile Button */}
+                {/* View Profile */}
                 <button className="w-full mt-6 py-2 rounded-xl border border-purple-500/50 text-purple-400 hover:bg-purple-500 hover:text-white transition-all duration-300 font-medium group-hover:scale-105">
                   View Profile
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      <section
-        id="gallery"
-        className="py-20 md:py-28 bg-gradient-to-br from-gray-900 to-black rounded-3xl"
-      >
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-sm font-medium mb-6">
-            <ImageIcon className="h-4 w-4" />
-            GALLERY
-          </div>
-          <h2 className="section-title text-4xl md:text-5xl">
-            Explore Our <span className="text-blue-400">World</span>
-          </h2>
-          <p className="section-subtitle text-center mt-4 max-w-2xl mx-auto text-lg">
-            Discover our state-of-the-art facilities and vibrant community
-            through photos and videos
-          </p>
-        </div>
+      {/* Gallery */}
+<section
+  id="gallery"
+  className="py-20 md:py-28 bg-gradient-to-br from-gray-900 to-black rounded-3xl"
+>
+  <div className="text-center">
+    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-sm font-medium mb-6">
+      <ImageIcon className="h-4 w-4" />
+      GALLERY
+    </div>
+    <h2 className="section-title text-4xl md:text-5xl">
+      Explore Our <span className="text-blue-400">World</span>
+    </h2>
+    <p className="section-subtitle text-center mt-4 max-w-2xl mx-auto text-lg">
+      Discover our state-of-the-art facilities and vibrant community
+      through photos and videos
+    </p>
+  </div>
 
-        {/* Masonry Grid */}
-        <div className="mt-12 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-          {galleryData.map((item, idx) => (
-            <div
-              key={idx}
-              className="break-inside-avoid group relative overflow-hidden rounded-2xl border border-white/10 hover:border-blue-500 transition-all duration-500 bg-gradient-to-br from-white/5 to-transparent"
-            >
-              {item.type === "image" ? (
-                <div className="relative aspect-[4/3] overflow-hidden">
+  {/* Responsive Gallery Layout */}
+  <div className="mt-12">
+    {/* 🟦 Mobile: Horizontal Scroll */}
+    <div className="block sm:hidden overflow-x-auto">
+      <div className="flex gap-4 px-4 snap-x snap-mandatory">
+        {galleryData.map((item, idx) => (
+          <div
+            key={idx}
+            className="min-w-[250px] flex-shrink-0 snap-start group relative overflow-hidden rounded-2xl border border-white/10 hover:border-blue-500 transition-all duration-500 bg-gradient-to-br from-white/5 to-transparent"
+          >
+            {item.type === "image" ? (
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+            ) : (
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <div className="relative aspect-video overflow-hidden">
                   <Image
-                    src={item.src}
+                    src={item.thumbnail || "/fallback.png"}
                     alt={item.alt}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs font-medium">
-                    {item.category}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-red-500 transition-all duration-300 shadow-2xl">
+                      <svg
+                        className="w-5 h-5 text-white ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              ) : (
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  <div className="relative aspect-video overflow-hidden">
-                    <Image
-                      src={item.thumbnail || "/fallback.png"}
-                      alt={item.alt}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-red-500 transition-all duration-300 shadow-2xl">
-                        <svg
-                          className="w-6 h-6 text-white ml-1"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="bg-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
-                          VIDEO
-                        </span>
-                        <span className="bg-black/60 text-white px-2 py-1 rounded text-xs">
-                          {item.duration}
-                        </span>
-                      </div>
-                      <h4 className="font-semibold text-white text-sm leading-tight">
-                        {item.title}
-                      </h4>
-                      <p className="text-neutral-300 text-xs mt-1">
-                        {item.category}
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              )}
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* 🖥️ Desktop: Masonry Grid */}
+    <div className="hidden sm:block columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4 px-4">
+      {galleryData.map((item, idx) => (
+        <div
+          key={idx}
+          className="break-inside-avoid group relative overflow-hidden rounded-2xl border border-white/10 hover:border-blue-500 transition-all duration-500 bg-gradient-to-br from-white/5 to-transparent"
+        >
+          {item.type === "image" ? (
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-700"
+              />
             </div>
-          ))}
+          ) : (
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+              <div className="relative aspect-video overflow-hidden">
+                <Image
+                  src={item.thumbnail || "/fallback.png"}
+                  alt={item.alt}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+            </a>
+          )}
         </div>
+      ))}
+    </div>
+  </div>
 
-        {/* View More Button */}
-        <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105">
-            View Complete Gallery
-          </button>
-        </div>
-      </section>
+  {/* View More Button */}
+  <div className="text-center mt-12">
+    <button className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105">
+      View Complete Gallery
+    </button>
+  </div>
+</section>
 
-      {/* Before & After Results - Enhanced */}
+
+      {/* Results / Before & After Results */}
       <section className="py-20 md:py-28">
         <div className="text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-medium mb-6">
@@ -1072,11 +1176,27 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          className="
+      mt-16 pt-4 sm:mt-20
+      flex sm:grid sm:grid-cols-2 lg:grid-cols-3
+      gap-4 sm:gap-6 md:gap-8
+      max-w-6xl mx-auto
+      overflow-x-auto sm:overflow-visible
+      snap-x snap-mandatory
+      px-2 sm:px-0
+      scrollbar-hide scroll-smooth
+    "
+        >
           {testimonials.map((result, idx) => (
             <div
               key={idx}
-              className="group relative bg-gradient-to-b from-white/5 to-transparent rounded-2xl border border-white/10 hover:border-green-500 transition-all duration-500 overflow-hidden"
+              className="
+          group relative bg-gradient-to-b from-white/5 to-transparent
+          rounded-2xl border border-white/10 hover:border-green-500
+          transition-all duration-500 overflow-hidden
+          min-w-[85%] sm:min-w-0 snap-center
+        "
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -1141,7 +1261,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Shorts Videos - Enhanced */}
+      {/* Shorts */}
       <section className="py-20 md:py-28 bg-gradient-to-br from-gray-900 to-black rounded-3xl">
         <div className="text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-400 text-sm font-medium mb-6">
@@ -1156,11 +1276,29 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* ✅ Scrollable for mobile, grid for desktop */}
+        <div
+          className="
+      mt-16 pt-4 sm:mt-20
+      flex sm:grid sm:grid-cols-2 lg:grid-cols-4
+      gap-4 sm:gap-6 md:gap-8
+      max-w-6xl mx-auto
+      overflow-x-auto sm:overflow-visible
+      snap-x snap-mandatory
+      px-2 sm:px-0
+      scrollbar-hide scroll-smooth
+    "
+        >
           {shortsGalleryData.map((video, idx) => (
             <div
               key={idx}
-              className="group relative aspect-[9/16] overflow-hidden rounded-2xl border border-white/10 hover:border-orange-500 transition-all duration-500 bg-gradient-to-b from-white/5 to-transparent"
+              className="
+          group relative aspect-[9/16]
+          overflow-hidden rounded-2xl border border-white/10
+          hover:border-orange-500 transition-all duration-500
+          bg-gradient-to-b from-white/5 to-transparent
+          min-w-[80%] sm:min-w-0 snap-center
+        "
             >
               <a
                 href={video.url}
@@ -1247,7 +1385,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ - Enhanced */}
+      {/* FAQ */}
       <section id="faq" className="py-20 md:py-28">
         <div className="text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 text-sm font-medium mb-6">
@@ -1263,122 +1401,93 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Left Column */}
-            <div className="space-y-6">
-              {[
-                {
-                  question: "What are your gym timings?",
-                  answer:
-                    "We're open 6 AM to 11 PM, 7 days a week. Early morning and late evening slots are available for your convenience.",
-                },
-                {
-                  question: "Do you provide personal training?",
-                  answer:
-                    "Yes! We have certified personal trainers including our founder Sujeet Kargutkar with 21+ years of experience. PT sessions are available for all membership plans.",
-                },
-                {
-                  question: "What facilities do you have?",
-                  answer:
-                    "We have modern weight training equipment, cardio machines, steam room, yoga studio, group classes, and a clean, well-maintained environment.",
-                },
-              ].map((faq, idx) => (
-                <div
-                  key={idx}
-                  className="group rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 hover:border-indigo-500 transition-all duration-500 hover:scale-105"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-indigo-500/20 rounded-lg group-hover:bg-indigo-500 transition-colors duration-300">
-                      <HelpCircle className="h-5 w-5 text-indigo-400 group-hover:text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg text-white mb-3">
-                        {faq.question}
-                      </h3>
-                      <p className="text-neutral-300 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-6">
-              {[
-                {
-                  question: "Is there a trial period?",
-                  answer:
-                    "Yes! We offer a 3-day free trial so you can experience our facilities and training before committing to a membership.",
-                },
-                {
-                  question: "What are your membership plans?",
-                  answer:
-                    "We have Monthly (₹1,999), Quarterly (₹4,999), and Yearly (₹13,999) plans. All plans include gym access, cardio, and steam facilities.",
-                },
-                {
-                  question: "Do you provide diet plans?",
-                  answer:
-                    "Yes! Our Quarterly and Yearly plans include personalized diet plans to help you achieve your fitness goals faster.",
-                },
-              ].map((faq, idx) => (
-                <div
-                  key={idx}
-                  className="group rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 hover:border-indigo-500 transition-all duration-500 hover:scale-105"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-indigo-500/20 rounded-lg group-hover:bg-indigo-500 transition-colors duration-300">
-                      <HelpCircle className="h-5 w-5 text-indigo-400 group-hover:text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg text-white mb-3">
-                        {faq.question}
-                      </h3>
-                      <p className="text-neutral-300 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Still Have Questions CTA */}
-          <div className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Still Have Questions?
-            </h3>
-            <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
-              Our team is here to help you get all the answers you need to start
-              your fitness journey.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="tel:+918097196222"
-                className="inline-flex items-center gap-2 bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300"
+        {/* FAQ Items */}
+        <div className="mt-16 w-full max-w-xl lg:max-w-xl mx-auto space-y-4">
+          {faqData.map((faq, index) => (
+            <div
+              key={index}
+              className={`rounded-2xl border transition-all duration-300 ${
+                openIndex === index
+                  ? "border-indigo-500 bg-indigo-950/40"
+                  : "border-white/10 bg-gradient-to-br from-white/5 to-transparent hover:border-indigo-400"
+              }`}
+            >
+              {/* Question */}
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full flex justify-between items-center text-left px-6 py-5 focus:outline-none"
               >
-                <Phone className="h-5 w-5" />
-                Call Now
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 border border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300"
-              >
-                <MessageCircle className="h-5 w-5" />
-                Send Message
-              </a>
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-indigo-500/20 rounded-lg">
+                    <HelpCircle className="h-5 w-5 text-indigo-400" />
+                  </div>
+                  <h3 className="font-semibold text-lg text-white">
+                    {faq.question}
+                  </h3>
+                </div>
+
+                {/* Toggle Icon */}
+                <motion.div
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="h-5 w-5 text-indigo-400" />
+                </motion.div>
+              </button>
+
+              {/* Answer */}
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="overflow-hidden px-6 pb-5"
+                  >
+                    <p className="text-neutral-300 leading-relaxed border-t border-white/10 pt-4">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
+          ))}
+        </div>
+
+        {/* Still Have Questions CTA */}
+        <div className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Still Have Questions?
+          </h3>
+          <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
+            Our team is here to help you get all the answers you need to start
+            your fitness journey.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="tel:+918097196222"
+              className="inline-flex items-center gap-2 bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300"
+            >
+              <Phone className="h-5 w-5" />
+              Call Now
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 border border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300"
+            >
+              <MessageCircle className="h-5 w-5" />
+              Send Message
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Contact Section */}
+      {/* Contact */}
       <section
         id="contact"
-        className="py-16 md:py-20 bg-gradient-to-br from-gray-900 to-black rounded-3xl"
+        className="py-16 px-4 md:py-20 bg-gradient-to-br from-gray-900 to-black rounded-3xl"
       >
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
@@ -1502,20 +1611,33 @@ function ContactForm() {
             name="user_name"
             required
             placeholder="Enter your name"
-            className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
+            className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
           />
         </div>
         <div>
           <label className="text-white font-medium mb-2 block text-sm sm:text-base">
             Phone Number *
           </label>
-          <input
-            name="user_phone"
-            required
-            type="tel"
-            placeholder="+91 00000 00000"
-            className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
-          />
+          <div className="flex items-center bg-black/40 rounded-xl border border-white/20 overflow-hidden">
+            <span className="inline-flex items-center justify-center px-3 py-2 text-md text-white bg-transparent">
+              +91
+            </span>
+            <input
+              name="user_phone"
+              required
+              type="tel"
+              inputMode="numeric"
+              pattern="^[0-9]{10}$"
+              maxLength={10}
+              placeholder="Enter 10 digit mobile"
+              onInput={(e) => {
+                // allow only digits and limit to 10 characters
+                const t = e.target;
+                t.value = t.value.replace(/\D/g, "").slice(0, 10);
+              }}
+              className="flex-1 bg-transparent px-3 sm:px-1 py-2 sm:py-2 outline-none focus:border-none focus:ring-0 transition-all duration-300 text-sm sm:text-base"
+            />
+          </div>
         </div>
       </div>
 
@@ -1527,7 +1649,7 @@ function ContactForm() {
           name="user_email"
           type="email"
           placeholder="your@email.com"
-          className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
+          className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
         />
       </div>
 
@@ -1537,7 +1659,7 @@ function ContactForm() {
         </label>
         <select
           name="user_goal"
-          className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-white text-sm sm:text-base"
+          className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-white text-sm sm:text-base"
         >
           <option className="text-black">Gym Membership</option>
           <option className="text-black">Personal Training (P.T)</option>
@@ -1556,20 +1678,20 @@ function ContactForm() {
           name="message"
           placeholder="Tell us about your fitness goals and any specific requirements..."
           rows={3}
-          className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none text-sm sm:text-base"
+          className="w-full bg-black/40 border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none text-sm sm:text-base"
         />
       </div>
 
       <motion.button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-3 sm:py-2 rounded-xl font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
         whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
       >
         {isSubmitting ? (
-          <div className="flex items-center justify-center gap-2">
-            <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          <div className="flex items-center justify-center gap-2 cursor-pointer">
+            <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin " />
             Sending...
           </div>
         ) : (
