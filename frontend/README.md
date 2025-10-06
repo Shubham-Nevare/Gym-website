@@ -33,7 +33,7 @@ It showcases gym services, membership plans, trainer details, transformation sto
 ---
 
 ## 📸 Screenshots
-![Gymmerzz Preview](image-1.png)
+![Gymmerzz Preview](public/image-1.png)
 
 ---
 
@@ -65,7 +65,7 @@ If you like this project, consider giving it a ⭐ **star on GitHub** — it mot
 ## 📸 Preview
 | Hero Section | Trainers | Gallery | Contact |
 |---------------|-----------|----------|----------|
-|![Hero](image-5.png)| ![Trainers](image-2.png) | ![Gallery](image-3.png)| ![Contact](image-4.png)|
+|![Hero](public/image-5.png)| ![Trainers](public/image-2.png) | ![Gallery](public/image-3.png)| ![Contact](public/image-4.png)|
 
 ---
 
