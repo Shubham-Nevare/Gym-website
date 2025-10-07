@@ -151,8 +151,7 @@ export default function Footer() {
                 <MapPin className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-neutral-300 text-sm leading-relaxed">
-                    Bing-G Wing, First & Upper Ground Floor, Shop FF 13 Gate 3,
-                    Delta Vrindavan, Mira Road East, Thane, 
+                    Mira Road East, Thane, 
                     Maharashtra 401107
                   </p>
                 </div>
@@ -162,10 +161,10 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-green-500 flex-shrink-0" />
                 <a 
-                  href="tel:+918097196222" 
+                  href="tel:+919876543210" 
                   className="text-neutral-300 hover:text-green-400 transition-colors font-medium"
                 >
-                  +91 80971 96222
+                  +91 98765 43210
                 </a>
               </div>
 

@@ -33,6 +33,9 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
+import FeaturedVideos from "@/components/GallerySection";
+import GallerySection from "@/components/GallerySection";
+import { ShortsSection } from "@/components/ShortsSection";
 
 export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -76,108 +79,6 @@ export default function Home() {
       text: "Well equipped and amazing vibe! Perfect balance of modern equipment and expert guidance.",
       author: "Amit K.",
       result: "Strength increased 40%",
-    },
-  ];
-
-  const galleryData = [
-    {
-      type: "image",
-      src: "/gym img1.webp",
-      alt: "Gym Equipment",
-      category: "Equipment",
-    },
-    {
-      type: "image",
-      src: "/gym img 2.jpeg",
-      alt: "Training Area",
-      category: "Training",
-    },
-    {
-      type: "image",
-      src: "/gym img 3.webp",
-      alt: "Yoga Studio",
-      category: "Yoga",
-    },
-    {
-      type: "image",
-      src: "/gym img 4.jpg",
-      alt: "Cardio Zone",
-      category: "Cardio",
-    },
-    {
-      type: "image",
-      src: "/gym img 5.jpeg",
-      alt: "Weight Area",
-      category: "Weights",
-    },
-    {
-      type: "image",
-      src: "/gym img 6.jpeg",
-      alt: "Locker Room",
-      category: "Facilities",
-    },
-    {
-      type: "image",
-      src: "/gym img 7.jpeg",
-      alt: "Gym Equipment",
-      category: "Equipment",
-    },
-    {
-      type: "image",
-      src: "/gym img 8.webp",
-      alt: "Training Area",
-      category: "Training",
-    },
-    {
-      type: "image",
-      src: "/gym img 9.jpeg",
-      alt: "Yoga Studio",
-      category: "Yoga",
-    },
-    {
-      type: "image",
-      src: "/gym img10.webp",
-      alt: "Cardio Zone",
-      category: "Cardio",
-    },
-    {
-      type: "video",
-      thumbnail: "https://img.youtube.com/vi/tmu0dxdLfog/hqdefault.jpg",
-      url: "https://youtu.be/tmu0dxdLfog",
-      title: "Gymmerzz Full Tour",
-      duration: "2:45",
-      category: "Tour",
-      alt: "Gymmerzz Gym Tour Video", // Added alt text
-    },
-    {
-      type: "video",
-      thumbnail: "https://img.youtube.com/vi/as16JOI_SDI/hqdefault.jpg",
-      url: "https://youtu.be/as16JOI_SDI",
-      title: "Workout Session",
-      duration: "1:30",
-      category: "Training",
-      alt: "Workout Session Video", // Added alt text
-    },
-    {
-      type: "video",
-      thumbnail: "https://img.youtube.com/vi/Q595t3wpnU8/hqdefault.jpg",
-      url: "https://www.youtube.com/watch?v=Q595t3wpnU8",
-      title: "Cardio Tips",
-      duration: "0:45",
-      category: "Tips",
-      alt: "Cardio Tips Video", // Added alt text
-    },
-    {
-      type: "video",
-      title: "Strength Training Basics",
-      url: "https://www.youtube.com/watch?v=EUxQpQMnpa8",
-      thumbnail: "https://img.youtube.com/vi/EUxQpQMnpa8/maxresdefault.jpg",
-      duration: "1:15",
-      level: "Intermediate",
-      calories: "200 cal",
-      duration: "0:45",
-      category: "Tips",
-      alt: "Cardio Tips Video", // Added alt text
     },
   ];
 
@@ -615,6 +516,8 @@ export default function Home() {
                 src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop"
                 alt="Gym"
                 fill
+                sizes="(max-width: 639px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                priority
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -829,7 +732,7 @@ export default function Home() {
         {/* Plans Grid (Responsive + Scrollable on Mobile) */}
         <div
           className="
-    mt-12 py-8 sm:mt-16 
+    mt-12 py-8 sm:mt-10 
     flex sm:grid sm:grid-cols-1 md:grid-cols-3 
     gap-4 sm:gap-6 md:gap-8 
     max-w-6xl mx-auto 
@@ -999,6 +902,7 @@ export default function Home() {
                   src={trainer.image}
                   alt={trainer.name}
                   fill
+                  sizes="(max-width: 639px) 85vw, (max-width: 1024px) 45vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
@@ -1053,112 +957,7 @@ export default function Home() {
       </section>
 
       {/* Gallery */}
-<section
-  id="gallery"
-  className="py-20 md:py-28 bg-gradient-to-br from-gray-900 to-black rounded-3xl"
->
-  <div className="text-center">
-    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-sm font-medium mb-6">
-      <ImageIcon className="h-4 w-4" />
-      GALLERY
-    </div>
-    <h2 className="section-title text-4xl md:text-5xl">
-      Explore Our <span className="text-blue-400">World</span>
-    </h2>
-    <p className="section-subtitle text-center mt-4 max-w-2xl mx-auto text-lg">
-      Discover our state-of-the-art facilities and vibrant community
-      through photos and videos
-    </p>
-  </div>
-
-  {/* Responsive Gallery Layout */}
-  <div className="mt-12">
-    {/* 🟦 Mobile: Horizontal Scroll */}
-    <div className="block sm:hidden overflow-x-auto">
-      <div className="flex gap-4 px-4 snap-x snap-mandatory">
-        {galleryData.map((item, idx) => (
-          <div
-            key={idx}
-            className="min-w-[250px] flex-shrink-0 snap-start group relative overflow-hidden rounded-2xl border border-white/10 hover:border-blue-500 transition-all duration-500 bg-gradient-to-br from-white/5 to-transparent"
-          >
-            {item.type === "image" ? (
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-            ) : (
-              <a href={item.url} target="_blank" rel="noopener noreferrer">
-                <div className="relative aspect-video overflow-hidden">
-                  <Image
-                    src={item.thumbnail || "/fallback.png"}
-                    alt={item.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-red-500 transition-all duration-300 shadow-2xl">
-                      <svg
-                        className="w-5 h-5 text-white ml-1"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* 🖥️ Desktop: Masonry Grid */}
-    <div className="hidden sm:block columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4 px-4">
-      {galleryData.map((item, idx) => (
-        <div
-          key={idx}
-          className="break-inside-avoid group relative overflow-hidden rounded-2xl border border-white/10 hover:border-blue-500 transition-all duration-500 bg-gradient-to-br from-white/5 to-transparent"
-        >
-          {item.type === "image" ? (
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-            </div>
-          ) : (
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-              <div className="relative aspect-video overflow-hidden">
-                <Image
-                  src={item.thumbnail || "/fallback.png"}
-                  alt={item.alt}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-            </a>
-          )}
-        </div>
-      ))}
-    </div>
-  </div>
-
-  {/* View More Button */}
-  <div className="text-center mt-12">
-    <button className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105">
-      View Complete Gallery
-    </button>
-  </div>
-</section>
-
+      <GallerySection />
 
       {/* Results / Before & After Results */}
       <section className="py-20 md:py-28">
@@ -1203,6 +1002,7 @@ export default function Home() {
                   src={result.image}
                   alt={`${result.name} transformation`}
                   fill
+                  sizes="(max-width: 639px) 85vw, (max-width: 1024px) 45vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -1262,128 +1062,7 @@ export default function Home() {
       </section>
 
       {/* Shorts */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-gray-900 to-black rounded-3xl">
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-400 text-sm font-medium mb-6">
-            <Zap className="h-4 w-4" />
-            QUICK WORKOUTS
-          </div>
-          <h2 className="section-title text-4xl md:text-5xl">
-            Quick <span className="text-orange-400">Workout Tips</span>
-          </h2>
-          <p className="section-subtitle text-center mt-4 max-w-2xl mx-auto text-lg">
-            Short, effective workouts and tips you can do anywhere, anytime
-          </p>
-        </div>
-
-        {/* ✅ Scrollable for mobile, grid for desktop */}
-        <div
-          className="
-      mt-16 pt-4 sm:mt-20
-      flex sm:grid sm:grid-cols-2 lg:grid-cols-4
-      gap-4 sm:gap-6 md:gap-8
-      max-w-6xl mx-auto
-      overflow-x-auto sm:overflow-visible
-      snap-x snap-mandatory
-      px-2 sm:px-0
-      scrollbar-hide scroll-smooth
-    "
-        >
-          {shortsGalleryData.map((video, idx) => (
-            <div
-              key={idx}
-              className="
-          group relative aspect-[9/16]
-          overflow-hidden rounded-2xl border border-white/10
-          hover:border-orange-500 transition-all duration-500
-          bg-gradient-to-b from-white/5 to-transparent
-          min-w-[80%] sm:min-w-0 snap-center
-        "
-            >
-              <a
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-full"
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={video.thumbnail}
-                    alt={video.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-                  {/* Play Button */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-14 h-14 bg-orange-600 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-orange-500 transition-all duration-300 shadow-2xl">
-                      <svg
-                        className="w-5 h-5 text-white ml-0.5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Video Info */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    {/* Level Badge */}
-                    <div
-                      className={`inline-block px-2 py-1 rounded-full text-xs font-medium mb-2 ${
-                        video.level === "Beginner"
-                          ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                          : video.level === "Intermediate"
-                          ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
-                          : "bg-red-500/20 text-red-400 border border-red-500/30"
-                      }`}
-                    >
-                      {video.level}
-                    </div>
-
-                    <h4 className="font-bold text-white text-lg leading-tight mb-2">
-                      {video.title}
-                    </h4>
-
-                    <div className="flex items-center justify-between text-sm text-neutral-300">
-                      <span>{video.duration}</span>
-                      <span>{video.calories}</span>
-                    </div>
-                  </div>
-
-                  {/* Shimmer Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                </div>
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Follow CTA */}
-        <div className="text-center mt-12">
-          <p className="text-neutral-400 mb-4">Want more daily workout tips?</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#"
-              className="flex items-center gap-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-300"
-            >
-              <Instagram className="h-5 w-5" />
-              Follow on Instagram
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-300"
-            >
-              <Youtube className="h-5 w-5" />
-              Subscribe on YouTube
-            </a>
-          </div>
-        </div>
-      </section>
+      <ShortsSection />
 
       {/* FAQ */}
       <section id="faq" className="py-20 md:py-28">
@@ -1564,34 +1243,16 @@ function ContactForm() {
   const formRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // 🧠 Add handleSubmit function
+  const handleSubmit = (e) => {
+    e.preventDefault(); // prevent page reload
     setIsSubmitting(true);
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      alert(
-        "EmailJS environment variables are missing. Please add them in .env.local"
-      );
+    // Simulate submission delay (optional)
+    setTimeout(() => {
       setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
-      alert("Thanks! We'll contact you shortly to schedule your free trial.");
-      formRef.current?.reset();
-    } catch (err) {
-      console.error(err);
-      alert(
-        "Failed to submit. Please try again or call us directly at +91 80971 96222"
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+      alert("Failed to submit, try again later."); // ✅ Alert message
+    }, 1500);
   };
 
   return (

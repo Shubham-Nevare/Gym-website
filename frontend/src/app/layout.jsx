@@ -14,7 +14,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://gymmerzzgym.com"),
   title: {
     default: "Gymmerzz Gym | Best Gym in Mira Road | Celebrity Trainer",
     template: "%s | Gymmerzz Gym",
@@ -28,7 +27,7 @@ export const metadata = {
     title: "Gymmerzz Gym | Best Gym in Mira Road",
     description:
       "Premium gym with celebrity trainer Sujeet Kargutkar. Book a free 3-day trial today!",
-    url: "https://gymmerzzgym.com",
+    url: "https://gymmerzzgym.vercel.app",
     siteName: "Gymmerzz Gym",
     images: [
       {
@@ -49,7 +48,7 @@ export const metadata = {
     images: ["/og.jpg"],
   },
   alternates: {
-    canonical: "https://gymmerzzgym.com",
+    canonical: "https://gymmerzzgym.vercel.app",
   },
 };
 

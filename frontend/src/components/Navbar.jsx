@@ -8,14 +8,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  //  useEffect(() => {
-  //   const handleScroll = () => {
-  //     console.log("Scroll position:", window.scrollY);
-  //     setScrolled(window.scrollY > 50);
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop =
@@ -110,7 +102,7 @@ export default function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
             <motion.a
-              href="tel:+918097196222"
+              href="tel:+919876543210"
               className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/20 hover:border-green-500 hover:bg-green-500/10 transition-all duration-300 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -198,12 +190,12 @@ export default function Navbar() {
               </div>
               <div className="mt-6 flex flex-col gap-3 w-full  justify-center">
                 <a
-                  href="tel:+918097196222"
+                  href="tel:+919876543210"
                   className="flex items-center justify-center gap-2 py-3 px-4 rounded-lg border border-green-500/50 bg-green-500/10 text-green-400 font-semibold text-base w-full"
                   onClick={() => setOpen(false)}
                 >
                   <Phone className="h-5 w-5" />
-                  Call +91 80971 96222
+                  Call +91 98765 43210
                 </a>
                 <a
                   href="#contact"
