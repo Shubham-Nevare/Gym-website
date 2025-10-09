@@ -3,99 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Play, ImageIcon } from "lucide-react";
+import { galleryData } from "../data";
 
 /* ==============================
  🎯 GALLERY SECTION
 ============================== */
 export default function GallerySection() {
-  const galleryData = {
-    images: [
-      {
-        type: "image",
-        src: "/gym img1.webp",
-        alt: "Gym Equipment",
-        category: "Equipment",
-      },
-      {
-        type: "image",
-        src: "/gym img 2.jpeg",
-        alt: "Training Area",
-        category: "Training",
-      },
-      {
-        type: "image",
-        src: "/gym img 3.webp",
-        alt: "Yoga Studio",
-        category: "Yoga",
-      },
-      {
-        type: "image",
-        src: "/gym img 4.jpg",
-        alt: "Cardio Zone",
-        category: "Cardio",
-      },
-      {
-        type: "image",
-        src: "/gym img 5.jpeg",
-        alt: "Weight Area",
-        category: "Weights",
-      },
-      {
-        type: "image",
-        src: "/gym img 6.jpeg",
-        alt: "Locker Room",
-        category: "Facilities",
-      },
-      {
-        type: "image",
-        src: "/gym img 7.jpeg",
-        alt: "Gym Equipment",
-        category: "Equipment",
-      },
-      {
-        type: "image",
-        src: "/gym img 8.webp",
-        alt: "Training Area",
-        category: "Training",
-      },
-      {
-        type: "image",
-        src: "/gym img 9.jpeg",
-        alt: "Yoga Studio",
-        category: "Yoga",
-      },
-      {
-        type: "image",
-        src: "/gym img10.webp",
-        alt: "Cardio Zone",
-        category: "Cardio",
-      },
-    ],
-
-    videos: [
-      {
-        type: "video",
-        thumbnail: "https://img.youtube.com/vi/tmu0dxdLfog/hqdefault.jpg",
-        url: "https://www.youtube.com/watch?v=tmu0dxdLfog",
-        embedUrl: "https://www.youtube.com/embed/tmu0dxdLfog",
-        title: "Gymmerzz Full Tour",
-        duration: "2:45",
-        category: "Tour",
-        alt: "Gymmerzz Gym Tour Video",
-      },
-      {
-        type: "video",
-        thumbnail: "https://img.youtube.com/vi/as16JOI_SDI/hqdefault.jpg",
-        url: "https://www.youtube.com/watch?v=as16JOI_SDI",
-        embedUrl: "https://www.youtube.com/embed/as16JOI_SDI",
-        title: "Workout Session",
-        duration: "1:30",
-        category: "Training",
-        alt: "Workout Session Video",
-      },
-    ],
-  };
-
   const { videos, images } = galleryData;
 
   return (

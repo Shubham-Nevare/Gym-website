@@ -1,45 +1,6 @@
 "use client";
 import { Zap, Instagram, Youtube } from "lucide-react";
-
-const shortsGalleryData = [
-  {
-    title: "Quick Cardio Burn",
-    url: "https://www.youtube.com/watch?v=Q595t3wpnU8",
-    thumbnail: "https://img.youtube.com/vi/Q595t3wpnU8/maxresdefault.jpg",
-    embedUrl: "https://www.youtube.com/embed/Q595t3wpnU8",
-    duration: "0:45",
-    level: "Beginner",
-    calories: "150 cal",
-  },
-  {
-    title: "Strength Training Basics",
-    url: "https://www.youtube.com/watch?v=EUxQpQMnpa8",
-    thumbnail: "https://img.youtube.com/vi/EUxQpQMnpa8/maxresdefault.jpg",
-    embedUrl: "https://www.youtube.com/embed/EUxQpQMnpa8",
-    duration: "1:15",
-    level: "Intermediate",
-    calories: "200 cal",
-  },
-  {
-    title: "Yoga Flow",
-    url: "https://www.youtube.com/watch?v=Q595t3wpnU8",
-    thumbnail: "https://img.youtube.com/vi/Q595t3wpnU8/maxresdefault.jpg",
-    embedUrl: "https://www.youtube.com/embed/Q595t3wpnU8",
-    duration: "2:00",
-    level: "All Levels",
-    calories: "120 cal",
-  },
-  {
-    title: "HIIT Workout",
-    url: "https://www.youtube.com/watch?v=EUxQpQMnpa8",
-    thumbnail: "https://img.youtube.com/vi/EUxQpQMnpa8/maxresdefault.jpg",
-    embedUrl: "https://www.youtube.com/embed/EUxQpQMnpa8",
-    duration: "1:30",
-    level: "Advanced",
-    calories: "250 cal",
-  },
-];
-
+import {shortsGalleryData} from "../data";
 
 export function ShortsSection() {
   return (
