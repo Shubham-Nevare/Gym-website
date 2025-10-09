@@ -967,7 +967,7 @@ export default function Home() {
                 },
                 {
                   icon: MessageCircle,
-                  text: "+91 80971 96222",
+                  text: "+91 98765 43210",
                   subtext: "Call or WhatsApp",
                 },
                 {
