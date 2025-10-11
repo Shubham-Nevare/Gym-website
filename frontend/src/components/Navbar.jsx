@@ -74,7 +74,7 @@ export default function Navbar() {
             </div>
             <div className="min-w-0">
               <span className="font-black text-lg sm:text-xl bg-gradient-to-r from-white to-red-100 bg-clip-text text-transparent">
-                Gymmerzz
+                YourGym
               </span>
               <div className="text-xs text-red-400 font-medium -mt-1">
                 MIRA ROAD
@@ -159,7 +159,7 @@ export default function Navbar() {
                   </div>
                 </div>
                 <span className="font-black text-lg bg-gradient-to-r from-white to-red-100 bg-clip-text text-transparent">
-                  Gymmerzz
+                  Your
                 </span>
               </div>
               {/* Close Button */}

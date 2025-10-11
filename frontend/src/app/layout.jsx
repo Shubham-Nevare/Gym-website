@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "Gymmerzz Gym | Best Gym in Mira Road | Celebrity Trainer",
-    template: "%s | Gymmerzz Gym",
+    default: "Your Gym | Best Gym in Mira Road | Celebrity Trainer",
+    template: "%s | Your Gym",
   },
   description:
     "Join Gymmerzz Gym in Mira Road. Premium facilities, certified trainers, personal training, cardio, yoga, steam, and more. Claim 3-day free trial and up to 60% off!",
@@ -24,7 +24,7 @@ export const metadata = {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Gymmerzz Gym | Best Gym in Mira Road",
+    title: "Your Gym | Best Gym in Mira Road",
     description:
       "Premium gym with celebrity trainer Sujeet Kargutkar. Book a free 3-day trial today!",
     url: "https://gymmerzzgym.vercel.app",
@@ -42,7 +42,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gymmerzz Gym | Best Gym in Mira Road",
+    title: "Your Gym | Best Gym in Mira Road",
     description:
       "Premium gym with celebrity trainer Sujeet Kargutkar. Book a free 3-day trial today!",
     images: ["/og.jpg"],

@@ -239,7 +239,7 @@ export default function Home() {
               ABOUT US
             </div>
             <h2 className="section-title text-3xl sm:text-4xl md:text-5xl">
-              Why Choose <span className="text-red-400">Gymmerzz</span>?
+              Why Choose <span className="text-red-400">YourGym</span>?
             </h2>
             <p className="section-subtitle mt-4 text-base sm:text-lg">
               Founded by{" "}
@@ -819,7 +819,7 @@ export default function Home() {
           </h3>
           <p className="text-green-100 mb-6 max-w-2xl mx-auto">
             Join hundreds of successful members who transformed their lives at
-            Gymmerzz
+            YourGym
           </p>
           <a
             href="#contact"

@@ -65,7 +65,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="font-black text-2xl bg-gradient-to-r from-white to-red-100 bg-clip-text text-transparent">
-                  Gymmerzz
+                  YourGym
                 </h3>
                 <p className="text-red-400 text-sm font-medium -mt-1">Premium Fitness Club</p>
               </div>
@@ -172,10 +172,10 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-blue-500 flex-shrink-0" />
                 <a 
-                  href="mailto:info@gymmerzz.com" 
+                  href="mailto:info@yourgym.com" 
                   className="text-neutral-300 hover:text-blue-400 transition-colors"
                 >
-                  info@gymmerzz.com
+                  info@yourgym.com
                 </a>
               </div>
 
@@ -202,7 +202,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-neutral-400 text-sm text-center md:text-left">
-            © {currentYear} Gymmerzz Private Limited. All rights reserved.
+            © {currentYear} YourGym Private Limited. All rights reserved.
           </div>
           
           <div className="flex items-center gap-6 text-sm text-neutral-400">
