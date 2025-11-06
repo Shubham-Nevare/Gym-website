@@ -244,7 +244,7 @@ export default function Home() {
             <p className="section-subtitle mt-4 text-base sm:text-lg">
               Founded by{" "}
               <span className="font-semibold text-red-400">
-                celebrity trainer Sujeet Kargutkar
+                celebrity trainer Sujeet Sharma
               </span>{" "}
               with 21+ years of experience, we blend science-backed training
               with modern equipment and a supportive community.
