@@ -212,7 +212,7 @@ export const plan = [
 
 export const trainer = [
   {
-    name: "Sujeet Kargutkar",
+    name: "Sujeet Sharma",
     role: "Founder & Head Trainer",
     image: "/gym trainer img 3.jpg",
     experience: "21+ years",

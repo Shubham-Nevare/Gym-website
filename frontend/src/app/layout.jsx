@@ -26,7 +26,7 @@ export const metadata = {
   openGraph: {
     title: "Your Gym | Best Gym in Mira Road",
     description:
-      "Premium gym with celebrity trainer Sujeet Kargutkar. Book a free 3-day trial today!",
+      "Premium gym with celebrity trainer Sujeet Sharma. Book a free 3-day trial today!",
     url: "https://gymmerzzgym.vercel.app",
     siteName: "Gymmerzz Gym",
     images: [
@@ -44,7 +44,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Your Gym | Best Gym in Mira Road",
     description:
-      "Premium gym with celebrity trainer Sujeet Kargutkar. Book a free 3-day trial today!",
+      "Premium gym with celebrity trainer Sujeet Sharma. Book a free 3-day trial today!",
     images: ["/og.jpg"],
   },
   alternates: {
